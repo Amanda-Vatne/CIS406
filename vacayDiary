@@ -1,0 +1,46 @@
+package vacayDiary1;
+
+import java.util.Scanner;
+
+public class VacayDiary1 {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Vacation Diary");
+		System.out.println();
+		
+		//Start date MM/DD/YYYY
+		System.out.print("Date of travel as MM/DD/YYYY: ");
+		String travelDate = input.next();
+		
+		//City
+		System.out.print("Traveling to City of: ");
+		String travelCity = input.next();
+		
+		//Country
+		System.out.print("Traveling to Country of: ");
+		String travelCountry = input.next();
+		
+		//Days staying
+		System.out.print("Number of days: ");
+		String travelDays = input.next();
+		
+		//Travel mode - Car, airplane, ship, train, bus
+		System.out.print("Mode of transportation (car, airplane, ship, train, bus): ");
+		String travelMode = input.next();
+		
+		//Final output
+		System.out.println();
+		System.out.println("Details of your trip:");
+		System.out.println("Date: " + travelDate);
+		System.out.println("City: " + travelCity);
+		System.out.println("Country: " + travelCountry);
+		System.out.println("Number of days: " + travelDays);
+		System.out.println("Traveling by: " + travelMode);
+		System.out.println("Goodbye!");
+		
+		input.close();
+	}
+
+}
