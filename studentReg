@@ -1,0 +1,36 @@
+package studentReg;
+
+import java.util.Scanner;
+
+public class StudentReg {
+
+	public static void main(String[] args) {
+		//Intro
+		System.out.println("Student Registration Form");
+		
+		//User input - first, last, year
+		System.out.print("Enter first name: ");
+		Scanner input = new Scanner(System.in);
+		String firstName = input.next();
+		
+		System.out.print("Enter last name: ");
+		String lastName = input.next();
+		
+		System.out.print("Enter year of birth: ");
+		String birthYear = input.next();
+		
+		//Full and pw
+		String fullName = firstName +" "+ lastName;
+		String passWord = firstName + birthYear;
+		
+		//Final output
+		System.out.println();
+		System.out.println("Welcome " + fullName + "!");
+		System.out.println("Your registration is complete.");
+		System.out.println("Your temporary password is " + passWord);
+		
+		input.close();
+
+	}
+
+}
