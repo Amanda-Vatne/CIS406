@@ -1,0 +1,47 @@
+package courseProject1;
+
+import java.util.Scanner;
+
+public class CourseProject1 {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+
+		//Item #
+		System.out.print("Item number: ");
+		String itemNum = input.next();
+
+		//Description 
+		System.out.print("Item description: ");
+		String itemDesc = input.next();
+
+		//Price
+		System.out.print("Item price: ");
+		double itemPrice = input.nextDouble();
+
+		//Quantity
+		System.out.print("Quantity: ");
+		int itemQuantity = input.nextInt();
+
+		//Tax in dollars
+		System.out.print("Tax amount in dollars: ");
+		double itemAmount = input.nextDouble();
+
+		//Discount in dollars
+		System.out.print("Discount amount in dollars: ");
+		double discountAmount = input.nextDouble();
+
+		//Net amount
+		System.out.print("Net amount: ");
+		double netAmount = input.nextDouble();
+		
+		input.close();
+		
+		System.out.printf("Item #      Desc        Cost        Quantity    Tax         Discount    Net Amount  ");
+		System.out.println();
+		System.out.printf("%-12s%-12s%-12.2f%,-12d%,-12.2f%,-12.2f%,-12.2f", itemNum, itemDesc, itemPrice, itemQuantity, itemAmount, discountAmount, netAmount);
+
+
+	}
+
+}
