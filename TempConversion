@@ -1,0 +1,38 @@
+package tempConversion;
+import java.util.Scanner;
+
+public class TempConversion {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		//Welcome
+		System.out.println("Welcome to the Temperature Converter");
+		
+		//Enter F
+		System.out.print("Enter degrees in Fahrenheit: ");
+		double FtoC = input.nextDouble();
+		
+		//convert F to C  --  (F - 32) * 5/9
+		FtoC = (FtoC - 32) * 5/9;
+		
+		//Display C
+		System.out.println("Degrees in Celcuis: " + FtoC);
+		
+		//Enter C
+		System.out.print("Enter degrees in Celcius: ");
+		double CtoF = input.nextDouble();
+		
+		//Convert C to F  --  (C * 9/5) + 32
+		CtoF = (CtoF * 9/5) + 32;
+		
+		//Display F
+		System.out.println("Degrees in Fahrenheit: " + CtoF);
+		
+		//Bye
+		input.close();
+		System.out.println("Goodbye!");
+
+	}
+
+}
