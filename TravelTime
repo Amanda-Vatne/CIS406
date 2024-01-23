@@ -1,0 +1,36 @@
+package travelCalculator;
+import java.util.Scanner;
+
+public class TravelCalculator {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		//Welcome
+		System.out.println("Welcom to the travel time calculator\n");
+		
+		//Input miles
+		System.out.print("Enter total miles: ");
+		double totMiles = input.nextDouble();
+		
+		// Input per hour
+		System.out.print("Enter miles per hour: ");
+		double mPerHour = input.nextDouble();
+		
+		//Calculate
+		double totHours = totMiles / mPerHour;
+		double totMin = ((totHours - (int)totHours) * 60 + .5);
+		
+		//Display as hours and minutes, labeled
+		System.out.println("\n*********************\nEstimated Travel Time");
+		System.out.println("Hours: " + (int)totHours);
+		System.out.println("Minutes: " + (int)totMin);
+		System.out.println("*********************\n");
+		input.close();
+		
+		//Bye
+		System.out.println("Goodbye!");
+
+	}
+
+}
