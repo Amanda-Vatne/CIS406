@@ -1,0 +1,51 @@
+package courseProject2;
+import java.util.Scanner;
+
+public class CourseProject2 {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+
+		//Item #
+		System.out.print("Item number: ");
+		String itemNum = input.next();
+
+		//Description 
+		System.out.print("Item description: ");
+		String itemDesc = input.next();
+
+		//Price
+		System.out.print("Item price: ");
+		double itemPrice = input.nextDouble();
+
+		//Quantity
+		System.out.print("Quantity: ");
+		int itemQuantity = input.nextInt();
+		
+		//Calculate gross
+		double itemGross = itemPrice * itemQuantity;
+
+		//Tax % , calculate
+		System.out.print("Tax amount as percent: %");
+		double taxPercent = input.nextDouble();
+		double taxAmount = itemGross * (taxPercent / 100);
+		
+
+		//Discount %, calculate
+		System.out.print("Discount amount as percent: %");
+		double discountPercent = input.nextDouble();
+		double discountAmount = itemGross * (discountPercent / 100);
+
+		//Calculate net
+		double netAmount = itemGross - discountAmount + taxAmount;
+		
+		input.close();
+		
+		System.out.println();
+		System.out.printf("Item #       Desc         Cost         Quantity     Tax %%        Tax $        Discount %%   Discount $   Net Amount   ");
+		System.out.println();
+		System.out.printf("%-13s%-13s%,-13d%,-13.2f%,-13.0f%,-13.2f%,-13.0f%,-13.2f%,-13.2f",itemNum, itemDesc, itemQuantity, itemGross, taxPercent, taxAmount, discountPercent, discountAmount, netAmount);
+
+	}
+
+}
