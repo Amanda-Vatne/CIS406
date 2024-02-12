@@ -1,0 +1,36 @@
+package powerTable;
+import java.util.Scanner;
+
+public class PowerTable {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Welcome to the Squares and Cubes table");
+		String contLoop = " ";
+		while(true) {
+			System.out.println("Enter an integer: ");
+			int startNum = input.nextInt();
+			
+			//Calc and display num, squared, cubed
+			System.out.println();
+			System.out.println("Number\tSquared\tCubed");
+			System.out.println("======\t=======\t=====");
+			
+			for (int i = 1; i < startNum + 1; i++) {
+				System.out.println(i + "\t" +
+									i*i+"\t" +
+									i*i*i);
+			}
+			
+			System.out.println("Continue? (y/n): ");
+			contLoop = input.next();
+			if (contLoop.equals("n")){
+				break;
+			}
+
+		}
+		input.close();
+		System.out.println("Bye!");
+	}
+
+}
