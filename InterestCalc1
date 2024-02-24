@@ -1,0 +1,45 @@
+package intrestCalc1;
+import java.util.Scanner;
+import java.util.Locale;
+import java.text.NumberFormat;
+
+public class InterestCalc1 {
+	public static double calcInterest(int loanAmount, double ratePercent) {
+		double interestAmount = ratePercent/100.0 * loanAmount;
+		return interestAmount;
+	}
+	
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		Locale  usa = new Locale("en", "US");
+		NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
+		
+		System.out.println("Welcome to the Interest Calculator");
+		
+		String contLoop = " ";
+		while(true) {
+			//Loan and rate input
+			System.out.print("\nEnter loan amount: ");
+			int loanAmount = input.nextInt();
+			System.out.print("Enter interest rate as percent: ");
+			double ratePercent = input.nextDouble();
+			
+			//Calculate
+			double interestAmount = calcInterest(loanAmount,ratePercent);
+			
+			//Output and continue
+			System.out.println("\nLoan Amount: \t" + dollarFormat.format(loanAmount));
+			System.out.println("Intrest rate: \t" + ratePercent + "%");
+			System.out.println("Interest: \t" + dollarFormat.format(interestAmount));
+			
+
+			System.out.print("\nContinue? (y/n): ");
+			contLoop = input.next();
+			if (contLoop.equalsIgnoreCase("n")){
+				break;
+			}
+		}	
+		input.close();
+		System.out.println("\nBye!");
+	}
+}
