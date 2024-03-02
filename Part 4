@@ -1,0 +1,132 @@
+package courseProject4;
+import java.util.Scanner;
+import java.util.Locale;
+import java.text.NumberFormat;
+
+public class CourseProject4 {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		Locale  usa = new Locale("en", "US");
+		NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
+		
+		String [] itemNumList = new String[10];
+		String [] itemDescList = new String[10];
+		double [] itemPriceList = new double[10];
+		int [] itemQuantityList = new int[10];
+		double [] itemGrossList = new double[10];
+		double [] taxPercentList = new double[10];
+		double [] taxAmountList = new double[10];
+		double [] discountPercentList = new double[10];
+		double [] discountAmountList = new double[10];
+		double [] itemNetList = new double[10];
+		
+		int lineCount = 0;
+		double totalGross = 0;
+		double totalTaxAmount = 0;
+		double totalDiscountAmount = 0;
+		double totalNet = 0;
+		
+		System.out.println("Customer information");
+		System.out.print("Invoice Date (MM/DD/YYYY): ");
+		String invoiceDate = input.nextLine();
+		System.out.print("Name: ");
+		String custName = input.nextLine();
+		System.out.print("Street Address: ");
+		String custAddress = input.nextLine();
+		System.out.print("City: ");
+		String custCity = input.nextLine();
+		System.out.print("State(Abbreviated): ");
+		String custState = input.nextLine();
+		System.out.print("Zip Code(5 Digits): ");
+		String custZip = input.nextLine();
+		
+		String contLoop = "";
+		while (true) {
+			System.out.println("Item " + (lineCount + 1));
+			//Item #
+			System.out.print("Item number: ");
+			String itemNum = input.nextLine();
+			itemNumList[lineCount] = itemNum;
+	
+			//Description 
+			System.out.print("Item description: ");
+			String itemDesc = input.nextLine();
+			itemDescList[lineCount] = itemDesc;
+	
+			//Price
+			System.out.print("Item price: ");
+			double itemPrice = input.nextDouble();
+			itemPriceList[lineCount] = itemPrice;
+	
+			//Quantity
+			System.out.print("Quantity: ");
+			int itemQuantity = input.nextInt();
+			itemQuantityList[lineCount] = itemQuantity;
+				
+			//Calculate gross
+			double itemGross = itemPrice * itemQuantity;
+			itemGrossList[lineCount] = itemGross;
+	
+			//Tax % , calculate
+			System.out.print("Tax amount as percent: %");
+			double taxPercent = input.nextDouble();
+			taxPercentList[lineCount] = taxPercent;
+			double taxAmount = itemGross * (taxPercent / 100);
+			taxAmountList[lineCount] = taxAmount;
+			
+			//Discount %, calculate
+			System.out.print("Discount amount as percent: %");
+			double discountPercent = input.nextDouble();
+			discountPercentList[lineCount] = discountPercent;
+			double discountAmount = itemGross * (discountPercent / 100);
+			discountAmountList[lineCount] = discountAmount;
+
+			//Calculate net
+			double netAmount = itemGross - discountAmount + taxAmount;
+			itemNetList[lineCount] = netAmount;
+			
+			
+			lineCount ++;
+			totalGross += itemGross;
+			totalTaxAmount += taxAmount;
+			totalDiscountAmount += discountAmount;
+			totalNet += netAmount;
+			
+			System.out.print("\nContinue? (y/n): ");
+			contLoop = input.nextLine();
+			contLoop = input.nextLine();
+			System.out.println();
+			if(contLoop.equalsIgnoreCase("n")) {
+				break;
+			}
+			
+		}
+
+		input.close();
+		
+		System.out.println("InvoiceDate\tCustomer Name\tStreet Name\tCity\t\tState\tZip Code");
+		System.out.println("-----------\t-------------\t-----------\t----------\t-----\t--------");
+		System.out.println(invoiceDate + "\t" + custName + "\t" + custAddress + "\t" + custCity + "\t" + custState + "\t" + custZip);	
+		System.out.println();
+		
+		System.out.println();
+		System.out.printf("Item Number\tDescription\tItem Price\tQuantity\tItem Gross\tTax %%\t\tTax $\t\tDiscount %%\tDiscount $\tNet Amount");
+		System.out.print("\n-----------\t-----------\t----------\t--------\t----------\t-----\t\t-----\t\t----------\t----------\t----------");
+		System.out.println();
+		
+
+		for (int i = 0; i < lineCount; i++) {
+			System.out.printf(itemNumList[i] + "\t\t" + itemDescList[i] + "\t" + dollarFormat.format(itemPriceList[i]) + "\t\t" + itemQuantityList[i] + "\t\t" + dollarFormat.format(itemGrossList[i]) + "\t\t" + taxPercentList[i] + "\t\t" + dollarFormat.format(taxAmountList[i]) + "\t\t" + discountPercentList[i] + "\t\t" + dollarFormat.format(discountAmountList[i]) + "\t\t" + dollarFormat.format(itemNetList[i]));
+			System.out.println();
+		}
+		
+		System.out.println("\n--------");
+		System.out.println("Totals");
+		System.out.println("--------");
+		
+		System.out.println(lineCount + " items\t\t\t\t\t\t\t\t" + dollarFormat.format(totalGross) + "\t\t\t\t" + dollarFormat.format(totalTaxAmount) + "\t\t\t\t" + dollarFormat.format(totalDiscountAmount) + "\t\t" + dollarFormat.format(totalNet));
+		System.out.println("\nThank you!!");
+	}
+
+}
